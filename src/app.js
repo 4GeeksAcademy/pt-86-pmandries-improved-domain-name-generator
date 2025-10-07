@@ -7,26 +7,23 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   //write your code here
-
-  const generateDomains = () => {
-    let pronoun = ['my', 'our', 'the', 'his', 'her'];
-    let adj1 = ['super', 'huge', 'tiny', 'unfathomable', 'monstrous'];
-    let adj2 = ['lit', 'sus', 'fun', 'boring', 'lazy'];
-    let noun = ['garbonzo', 'bassoon', 'sloth', 'koala', 'didgeridoo'];
-    let extension = ['.com', '.net', '.org', '.edu', '.gov'];
-
-    for(let i = 0; i < pronoun.length; i++) {
-      for(let j = 0; j < adj1.length; j++) {
-        for(let k = 0; k < adj2.length; k++) {
-          for(let l = 0; l < noun.length; l++) {
-            for(let m = 0; m < extension.length; m++) {
-              console.log("https://" + pronoun[i] + adj1[j] + adj2[k] + noun[l] + extension[m]);
-            }
-          }
-        }
-      }
-    }
-  }
-  generateDomains()
+    document.querySelector(".btn").addEventListener("click", generateDomains)
 };
+  const generateDomains = () => {
+    let pronouns = ['my', 'our', 'the', 'his', 'her'];
+    let firstAdjectives = ['super', 'huge', 'tiny', 'unfathomable', 'monstrous'];
+    let secondAdjectives = ['lit', 'sus', 'fun', 'boring', 'lazy'];
+    let nouns = ['garbonzo', 'bassoon', 'sloth', 'koala', 'didgeridoo'];
+    let extensions = ['.com', '.net', '.org', '.edu', '.gov'];
+    let allDomains = "";
 
+    for(let pronoun of pronouns)
+      for(let firstAdjective of firstAdjectives)
+        for(let secondAdjective of secondAdjectives)
+          for(let noun of nouns)
+            for(let extension of extensions) {
+              console.log("https://" + pronoun + firstAdjective + secondAdjective + noun + extension);
+              allDomains += "https://" + pronoun + firstAdjective + secondAdjective + noun + extension + "<hr>";
+          }
+    document.getElementById("output").innerHTML = allDomains;
+  }
